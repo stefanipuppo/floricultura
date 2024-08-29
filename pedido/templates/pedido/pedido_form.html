@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criar Novo Pedido</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/pedidos.css' %}">
+</head>
+<body>
+    <h2>Criar Novo Pedido</h2>
+    <div class='container_pedidos'>
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                <label for="{{ form.cliente.id_for_label }}">Cliente:</label>
+                {{ form.cliente }}
+            </p>
+            <p>
+                <label for="{{ form.email.id_for_label }}">Email:</label>
+                {{ form.email }}
+            </p>
+            <p>
+                <label for="{{ form.planta.id_for_label }}">Planta:</label>
+                {{ form.planta }}
+            </p>
+            <p>
+                <label>Quantidade:</label>
+                <input type="number" name="quantidade" id="quantidade-input" min="1">
+            </p>
+            <p>
+                <label for="{{ form.data_entrega.id_for_label }}">Data de Entrega:</label>
+                {{ form.data_entrega }}
+            </p>
+            <button type="submit">Salvar</button>
+            <a href="{% url 'pedido_lista' %}">Ver lista de pedidos</a>
+            <a href="{% url 'home' %}" class="button">Voltar</a>
+        </form>
+    </div>
+</body>
+</html>

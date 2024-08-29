@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilha Verde</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="cabecalho">
+        <h1>Bem-vindo à Ilha Verde</h1>
+        <p>Seu sistema de gestão de floricultura.</p>
+    </div>
+
+    <div class="container">
+        <div><a href="{% url 'lista' %}" class="button">Plantas</a></div><br>
+        <div><a href="{% url 'cliente_novo' %}" class="button">Clientes</a></div><br>
+        <div><a href="{% url 'pedido_novo' %}" class="button">Pedidos</a></div><br>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Planta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="plant-details">
+            <h1>{{ planta.nome }}</h1>
+            <p><strong>Espécie:</strong> {{ planta.especie }}</p>
+            <p><strong>Descrição:</strong> {{ planta.descricao }}</p>
+            <p><strong>Preço:</strong> R$ {{ planta.preco }}</p>
+            <p><strong>Estoque:</strong> {{ planta.estoque }}</p>
+            <a href="{% url 'editar' planta.pk %}" class="button">Editar</a>
+            <a href="{% url 'deletar' planta.pk %}" class="button">Deletar</a>
+            <a href="{% url 'lista' %}" class="button">Voltar para lista</a>
+        </div>
+    </div>
+</body>
+</html>

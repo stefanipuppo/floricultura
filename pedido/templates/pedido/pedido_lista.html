@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Pedidos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/lista_pedidos.css' %}">
+</head>
+<body>
+    <h2>Lista de Pedidos</h2>
+    <div class='container_pedidos'>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Email</th>
+                    <th>Data de Entrega</th>
+                    <th>Plantas</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                <tr>
+                    <td>{{ pedido.id }}</td>
+                    <td>{{ pedido.cliente }}</td>
+                    <td>{{ pedido.email }}</td>
+                    <td>{{ pedido.data_entrega }}</td>
+         
+                    <td>
+                        {% if pedido.pedidoplanta_set.all %}
+                            {% for pp in pedido.pedidoplanta_set.all %}
+                                {{ pp.planta.nome }} - {{ pp.quantidade }} unidades<br>
+                            {% endfor %}
+                        {% else %}
+                            Sem plantas associadas
+                        {% endif %}
+                    </td>
+                                        
+                    <td>
+                        <form action="{% url 'pedido_excluir' pedido.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return confirm('Tem certeza de que deseja excluir este pedido?')">Excluir</button>
+                        </form>                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'pedido_novo' %}" class="button">Novo Pedido</a>
+    </div>
+</body>
+</html>

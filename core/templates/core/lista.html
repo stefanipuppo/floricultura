@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Plantas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Plantas</h1>
+        <ul class="plant-list">
+            {% for planta in plantas %}
+            <li class="plant-item">
+                <a href="{% url 'detalhes' pk=planta.id %}">{{ planta.nome }}</a>
+                <p>{{ planta.especie }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'planta_nova' %}" class="button">Adicionar Nova Planta</a>
+        <a href="{% url 'home' %}" class="button">Voltar para Home</a>
+    </div>
+</body>
+</html>
