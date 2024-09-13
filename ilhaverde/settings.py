@@ -28,7 +28,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'https://floricultura-sooty.vercel.app/',
-    'https://eustefan1.pythonanywhere.com/'
+    'https://eustefan1.pythonanywhere.com/',
+    'eustefan1.pythonanywhere.com'
 ]
 
 
